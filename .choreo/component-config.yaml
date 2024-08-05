@@ -6,15 +6,8 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DJANGO_SETTINGS_MODULE=myproject.settings
+      - DJANGO_SETTINGS_MODULE=mysite.settings
       - DJANGO_SECRET_KEY=your-secret-key
       - DATABASE_URL=your-database-url
-    volumes:
-      - .:/app
-    command: ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
     networks:
       - my-network
-
-networks:
-  my-network:
-    driver: bridge
