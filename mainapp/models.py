@@ -4,6 +4,8 @@ class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
+        if not password:
+            password='application'
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
@@ -21,6 +23,7 @@ class CustomUser(AbstractBaseUser):
     contact = models.CharField(max_length=20, blank=True, null=True)
     dateFiled = models.DateField(blank=True, null=True)
     noOftask = models.IntegerField(default=0)
+    completedTask = models.IntegerField(default=0)
     tasks = models.JSONField(default=list)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -39,3 +42,6 @@ class UploadedFile(models.Model):
 
     def __str__(self):
         return self.file.name
+class TaskUpdate(models.Model):
+    task_index=models.IntegerField(default=-1)
+    task_data=models.CharField(default=list)
