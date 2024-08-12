@@ -1,0 +1,22 @@
+export const environment = {
+  production: true,
+  API_HOST: "https://playnwinapi.api.engageapps.jio/spin2winpnw/api",
+  ENV: "prod",
+  GA_EVENT: "funZone",
+  GA_CATEGORY: "Spin2Win",
+  TNC_URL: "https://tnc.api.engageapps.jio/spin2winpnw/terms-and-conditions.html",
+  HOW_TO_PLAY_URL: "https://jiobb.jiokhelo.com/asianpaints/index.html",
+  FAQ_URL: "https://jiobb.jiokhelo.com/asianpaints/faq.html",
+  contentUrl: "assets/config/content.json",
+  ANDROID_JE_HOMEPAGE: "jio://com.jio.myjio/dl/jio_engage_dashboard",
+  IOS_JE_HOMEPAGE: "myjio://com.jio.myjio/jio_engage",
+  ANDROID_MYWINNINGS: "jio://com.jio.myjio/dl/engage1?setTab=1",
+  IOS_MYWINNINGS: "myjio://com.jio.myjio/engage?setTab=1",
+  JIOTV_MYWINNINGS: "jioplay://jioengage?game=jiotvmywinning",
+  OFFER_STORE_ANDROID_LINK: "jio://com.jio.myjio/engage1",
+  OFFER_STORE_IOS_LINK: "myjio://com.jio.myjio/engage1",
+  CENTRAL_API_HOST: "https://centraluser.api.engageapps.jio",
+  JE_ASSETS_BASE_URL: "https://jioplayalong4.akamaized.net/resources/je-logo/",
+  SHARE_IMGURL:
+    "https://jiokbc.akamaized.net/ipl2020test/prizes/s-f3b8eaf9-0b61-4174-9fd3-39a063846176/i-735bcc80-87fd-479c-9887-ff65f0eaac5aGroup427321995.png",
+};

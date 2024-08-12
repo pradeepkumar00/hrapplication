@@ -1,0 +1,208 @@
+@import 'mixins';
+
+.form-pop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    @include flex-container(center, center);
+    .main-form{
+        max-height: 90%;;
+        background: #FFFFFF;
+        border-radius: 4px 4px 0px 0px;
+        @include flex-container(center, center, column);
+        padding: 16px;
+        gap: 20px;
+        .header{
+            @include flex-container(center, space-between);
+            width: 100%;
+            @include font(20, regular, #091E42);
+            line-height: 30px;
+            letter-spacing: 0.15px;
+            .close{
+                @include flex-container(center, center);
+                border: 1px solid #E6E8EC;
+                padding: 10px;
+                border-radius: 100px;
+                width: 36px;
+                height: 36px;
+                aspect-ratio: 1;
+                svg{
+                    width: 10.5px;
+                    height: 10.5px;
+                }
+            }
+        }
+        .line{
+            width: 100%;
+            height: 1px;
+            background: #E6E8EC;
+        }
+        .scroll{
+            height: 100%;
+            overflow-y: scroll;
+        }
+        .form{
+            width: 820px;
+            @include flex-container(center, center);
+            flex-wrap: wrap;
+            gap: 20px;
+            .input{
+                width: 400px;
+                @include flex-container(flex-start, center, column);
+                gap: 4px;
+                input{
+                    width: 100%;
+                    padding: 9px;
+                    border: 1px solid #E6E8EC;
+                    border-radius: 4px;
+                }
+                .left-icon{
+                    @include flex-container(center, center);
+                    border: 1px solid #E6E8EC;
+                    border-radius: 4px;
+                    width: 100%;
+                    input{
+                        border: none;
+                    }
+                    img{
+                        height: 100%;
+                        background: #F2F3F5;
+                        padding: 8px;
+                        border-radius: 4px 0 0 4px
+                    }
+                }
+                .date{
+                    border: 1px solid #E6E8EC;
+                    width: 100%;
+                    border-radius: 4px;
+                    @include flex-container(center, flex-start);
+                    position: relative;
+                    .date-input{
+                        position: absolute;
+                        height: 100%;
+                        aspect-ratio: 1;
+                        opacity: 0;
+                        width: 33px;
+                    }
+                    img{
+                        height: 100%;
+                        // background: #F2F3F5;
+                        padding: 8px;
+                        border-radius: 4px 0 0 4px
+                    }
+                    input{
+                        border: none;
+                    }
+
+                }
+            }
+            label{
+                @include font(12, light, #465671);
+                line-height: 18px;
+                letter-spacing: 0.4px;
+                span{
+                    color: #F84912;
+                }
+            }
+        }
+        .task-list{
+            margin-top: 16px;
+            background: #F9F9F9;
+            width: 100%;
+            border-radius: 6px;
+            @include flex-container(center, flex-start, column);
+            .task{
+                padding: 12px;
+                flex-wrap: wrap;
+                width: 100%;
+                @include flex-container(center, center);
+                .task-no{
+                    @include font(16, regular, #091E42);
+                    width: 100%;
+                    margin-bottom: 20px;
+                    input{
+                        width: 100%;
+                    }
+                }
+                .task-input{
+                    padding-right: 16px;
+                    width: 70%;
+                    @include flex-container(flex-start, center, column);
+                    gap: 4px;
+                    @include font(12, regular, #465671);
+                    input{
+                        border-radius: 4px;
+                        border: 1px solid #E6E8EC;
+                        padding: 9px;
+                        width: 100%;
+                    }
+                }
+                .task-select{
+                    width: 30%;
+                    @include flex-container(flex-start, center, column);
+                    gap: 4px;
+                    @include font(12, regular, #465671);
+                    position: relative;
+                    
+                    img{
+                        bottom: 0;
+                        position: absolute;
+                        padding: 8px;
+                    }
+                    select{
+                        border-radius: 4px;
+                        border: 1px solid #E6E8EC;
+                        padding: 9px 9px 9px 33px;
+                        width: 100%;
+                        outline: none;
+                    }
+                }
+                .task-desc{
+                    margin-top: 16px;
+                    gap: 4px;
+                    @include flex-container(flex-start, flex-start, column);
+                    width: 100%;
+                    label{
+                        @include font(12, regular, #465671);
+                    }
+                    textarea{
+                        padding: 8px;
+                        @include font(12, regular, #848EA0);
+                        border: 1px solid #E6E8EC;
+                        height: 65px;
+                        width: 100%;
+                        resize: none; 
+                        outline: none;
+                    }
+                }
+            }
+        }
+        .add-task{
+            width: 100%;
+            @include flex-container(12, regular, #465671);
+        }
+        .save{
+            width: 100%;
+            @include flex-container(center, flex-end);
+            .cta{
+                padding: 8px 20px;
+                @include flex-container(center, center);
+                @include font(12, regular, #091E42);
+                background-color: #FFB414;
+                border-radius: 30px;
+                cursor: pointer;
+            }
+            .disable{
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+    }
+}
+input{
+    outline: none;
+    border: none;
+}

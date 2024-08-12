@@ -1,0 +1,35 @@
+@import "mixins";
+
+.app-component {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+
+  .not-logged-in {
+    @include flex-container(center, center, column);
+    background: #fef7e9;
+    @include font(12, bold, #2e317d);
+    .loading-text {
+      width: 65px;
+      &:after {
+        content: "Loading";
+        animation: loading-text 3s infinite;
+      }
+    }
+  }
+}
+
+@keyframes loading-text {
+  0% {
+    content: "Loading";
+  }
+  0% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  100% {
+    content: "Loading...";
+  }
+}

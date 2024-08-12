@@ -1,0 +1,90 @@
+<div class="client">
+    <div class="header">
+        <app-header></app-header>
+    </div>
+    <div class="intro">
+        <div class="heading">
+            Hello, {{profile.name}} !<br>
+            <div class="desc">Congratulations 🎉 on being selected for the role of <span>UX Designer</span> at Searce.
+            </div>
+        </div>
+        <div class="joining-info">
+            <div class="days">
+                {{days}}
+                <div class="days-desc">
+                    days to go
+                </div>
+            </div>
+            <div class="joining-desc">
+                Your first day will be
+                <div class="date">
+                    {{ profile.dateFiled | date: 'EEEE, d MMMM yyyy' }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tasks">
+        <hr>
+        <div class="task-heading">
+        </div>
+        <div class="tabs">
+            <div class="tab" *ngFor="let task of profile.tasks; let i=index" (click)="selectTask(task, i)">
+                <div class="left">
+                    <div class="title">
+                        {{task.title}}
+                    </div>
+                    {{task.type=='file'? 'File upload' : 'Text input'}} | {{task.ispending? 'Pending' :
+                    task.type=='file'? 'file uploaded' : 'Answer submitted'}}
+                </div>
+                <div class="right">
+                    <img *ngIf="task.ispending" src="assets/images/info.svg">
+                    <img *ngIf="!task.ispending" src="assets/images/success.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pop-box" *ngIf="this.selectedIndex>-1">
+    <div class="main-pop">
+        <div class="header">
+            <span>{{selectedTask.title}}</span>
+            <div class="close" (click)="close()">
+                <svg>
+                    <line x1=0 y1=0 x2=10.5 y2=10.5 stroke="black" stroke-width="1" />
+                    <line x1=0 y1=10.5 x2=10.5 y2=0 stroke="black" stroke-width="1" />
+                </svg>
+            </div>
+        </div>
+        <div class="desc">
+            {{selectedTask.desc}}
+        </div>
+        <div class="file-upload"  *ngIf="selectedTask.type=='file'">
+            <div class="dropzone" appDrag (files)="filesDropped($event[0].file)">
+                <div class="text-wrapper">
+                    <div class="img">
+                        <img src="assets/images/file.svg">
+                    </div>
+                    <div class="centered">Drag & drop files or 
+                         <div class="browse">
+                            browse
+                            <input type="file" (change)="filesDropped($event.target.files[0])">
+                        </div>
+                    </div>
+                    <div class="supported">
+                        Supported formats: JPEG, PNG, PDF
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="textarea" #text *ngIf="selectedTask.type!='file'">
+            <textarea placeholder="Write here" [(ngModel)]="textValue"></textarea>
+        </div>
+        <hr>
+        <div class="bottom">
+            <div class="cta" [class.disable]="file==null && textValue==null" (click)="upload(text)">
+                Submit
+            </div>
+        </div>
+        
+    </div>
+</div>

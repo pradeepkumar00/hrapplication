@@ -1,0 +1,259 @@
+@import 'mixins';
+.main-component {
+  height: 100%;
+  width: 100%;
+  @include flex-container(center, flex-start, column);
+  .header{
+    width: 100%;
+  }
+  .user-list{
+    padding: 20px 100px;
+    height: 100%;
+    width: 100%;
+    @include flex-container(center, flex-start, column);
+    gap: 15px;
+    .heading{
+      width: 100%;
+      @include flex-container(center, space-between);
+      @include font(20, regular, #091E42);
+      letter-spacing: 0.15px;
+      .add-hire{
+        background: #FFB414;
+        padding: 8px 20px 8px 12px;
+        border-radius: 100px;
+        cursor: pointer;
+        @include font(12, regular, #091E42);
+
+      }
+    }
+    .table{
+      width: 100%;
+      overflow: hidden;
+      @include flex-container(center, center, column);
+      border: 1px solid #E6E8EC;
+      border-radius: 4px;
+      .head{
+        border: none !important;
+        background-color: #F3F3F3;
+      }
+      .row{
+        border-top: 1px solid #E6E8EC;
+        width: 100%;
+        @include flex-container(center, center, row);
+        .col{
+          @include flex-container(center, flex-start);
+          height: 100%;
+          padding: 10px;
+          position: relative;
+          
+          .line{
+            position: absolute;
+            right: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background: #C1C7D0;
+          }
+        }
+        .icon{
+          width: 4%;
+          @include flex-container(center, center);
+          cursor: pointer;
+          svg{
+            width: 9px;
+            height: 5px;
+          }
+          .selected{
+            transform: rotateZ(180deg);
+          }
+        }
+        .emp-id{
+          width: 11%;
+          @include font(14, light, #091E42);
+        }
+        .name{
+          width: 16%;
+          @include font(14, light, #091E42);
+        }
+        .doj{
+          width: 11%;
+          @include font(14, light, #091E42);
+        }
+        .taskno{
+          width: 11%;
+          @include font(14, light, #091E42);
+        }
+        .status{
+          width: 17%;
+          @include flex-container(flex-start, center, column);
+          gap: 8px;
+          .stats{
+            gap: 10px;
+            @include font(14, light, #091E42);
+            @include flex-container(center, flex-start);
+          }
+          .progress{
+            background: #E6E6E6;
+            border-radius: 2px;
+            height: 4px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            .filled{
+              height: 100%;
+              background: #81CB85;
+            }
+          }
+        }
+        .action{
+          width: 30%;
+          @include flex-container(center, flex-start);
+          gap: 6px;
+          .edit{
+            cursor: pointer;
+            width: 120px;
+            height: 26px;
+            border: 1px solid #FFB414;
+            border-radius: 100px;
+            @include font(12, regular, #465671);
+            @include flex-container(center, center);
+            gap: 4px;
+            svg{
+              width: 12.75px
+            };
+          }
+        }
+      }
+    }
+  }
+}
+.expand{
+  border-top: 1px solid #E6E8EC;
+  padding: 10px 30px;
+  width: 100%;
+  @include flex-container(center, flex-start);
+  flex-wrap: wrap;
+  gap: 10px;
+  .tab{
+    padding: 8px 12px;
+    width: calc(50% - 5px);
+    border-radius: 4px;
+    border: 1px solid #E6E8EC;
+    @include flex-container(center, space-between);
+
+    .left{
+      @include flex-container(flex-start, center, column);
+      .top{
+        @include font(14, regular, #091E42);
+      }
+      .bottom{
+        @include font(12, light, #848EA0);
+      }
+    }
+    .right{
+      @include flex-container(center, center);
+      gap: 16px;
+      img:nth-child(2){
+        cursor: pointer;
+      }
+    }
+  }
+}
+.pop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include flex-container(center, center);
+  background: rgba($color: #000000, $alpha: 0.5);
+}
+.task-detail{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($color: #000000, $alpha: 0.2);
+}
+.pop-box {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba($color: #000000, $alpha: 0.2);
+  @include flex-container(center, center);
+
+  .main-pop {
+      padding: 24px 24px 0px 24px;
+      @include flex-container(center, flex-start, column);
+      border-radius: 4px;
+      width: 50%;
+      height: 400px;
+      background-color: #fff;
+
+      .header {
+          @include flex-container(flex-start, space-between);
+          width: 100%;
+          border-bottom: 1px solid #E6E8EC;
+          padding-bottom: 16px;
+          @include font(20, regular, #091E42);
+          letter-spacing: 0.15px;
+
+          .close {
+              cursor: pointer;
+              width: 36px;
+              height: 36px;
+              @include flex-container(center, center);
+              border-radius: 100px;
+              border: 1px solid #E6E8EC;
+
+              svg {
+                  width: 10.5px;
+                  height: 10.5px;
+              }
+          }
+      }
+
+      .desc {
+          margin-top: 24px;
+          @include font(12, regular #465671);
+          width: 100%;
+          line-height: 20px;
+      }
+      .files{
+        margin-top: 16px;
+        width: 100%;
+        @include flex-container(center, flex-start);
+      }
+      .file{
+        cursor: pointer;
+        min-width: 154px;
+        border-radius: 4px;
+        @include flex-container(center, center, column);
+        border: 1px solid #E6E8EC;
+        overflow: hidden;
+        .image{
+          height: 58px;
+        }
+        img{
+          max-width: 100%;
+          max-height: 100%;
+        }
+        padding-top: 4px;
+        .fileName{
+          padding: 8px;
+          @include font(12, regular, #091E42);
+        } 
+      }
+      .feedback{
+        margin-top: 16px;
+        width: 100%;
+        @include flex-container(14, light, #465671);
+        line-height: 21px;
+        letter-spacing: 0.25px;
+      }
+
+  }
+}

@@ -1,0 +1,60 @@
+@import 'mixins';
+
+.login{
+    width: 100%;
+    height: 100%;
+    @include flex-container(center, center, column);
+    position: relative;
+    .header{
+        height: 56px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        padding: 0px 50px;
+        @include flex-container(center, flex-start);
+        background: #F9F9F9;
+        img{
+            height: 24px;
+        }
+    }
+    .container{
+        @include flex-container(center, center, column);
+        gap: 20px;
+        // width: 100%;
+        border: 1px solid rgba($color: #000000, $alpha: 0.3);
+        padding: 20px 30px;
+        border-radius: 10px;
+        .login{
+            width: 100%;
+            @include font(20, bold, #000);
+            padding-bottom: 20px;
+        }
+        .email{
+            width: 400px;
+            
+            input{
+                padding: 4px 10px;
+                outline: none;
+                width: 100%;
+                height: 30px;
+            }
+        }
+        .login-cta{
+            padding: 5px 50px;
+            background: skyblue;
+            border-radius: 100px;
+            cursor: pointer;
+            @include font(14, bold, #000);
+        }
+    }
+}
+.loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    @include flex-container(center, center);
+
+}

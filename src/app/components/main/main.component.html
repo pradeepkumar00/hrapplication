@@ -1,0 +1,168 @@
+<div class="main-component">
+  <div class="header">
+    <app-header></app-header>
+  </div>
+  <div class="user-list">
+    <div class="heading">
+      New Hires
+      <div class="add-hire" (click)="update()">
+        &#43; Add new hire
+      </div>
+    </div>
+    <div class="table">
+      <div class="row head">
+        <div class="icon col">
+          <div class="line"></div>
+        </div>
+        <div class="emp-id col">
+          Employee ID
+          <div class="line"></div>
+        </div>
+        <div class="name col">
+          Name
+          <div class="line"></div>
+        </div>
+        <div class="doj col">
+          Date of joining
+          <div class="line"></div>
+        </div>
+        <div class="taskno col">
+          Tasks assigned
+          <div class="line"></div>
+        </div>
+        <div class="status col">
+          Status
+          <div class="line"></div>
+        </div>
+        <div class="action col">
+          Actions
+        </div>
+      </div>
+      <ng-container *ngFor="let user of users; let i=index">
+        <div class="row">
+          <div class="icon col" (click)="selectedIndex==i ? selectedIndex=-1 : selectedIndex=i">
+            <svg [class.selected]="i==selectedIndex">
+              <line x1="0" y1="0" x2="4.5" y2="5" stroke="black" stroke-width="1" />
+              <line x1="4.5" y1="5" x2="9" y2="0" stroke="black" stroke-width="1" />
+            </svg>
+          </div>
+          <div class="emp-id col">
+            {{user.id}}
+          </div>
+          <div class="name col">
+            {{user.name}}
+          </div>
+          <div class="doj col">
+            {{user.dateFiled}}
+          </div>
+          <div class="taskno col">
+            {{user.noOftask}}
+          </div>
+          <div class="status col">
+            <div class="stats">
+              {{user.completedTask}}/{{user.noOftask}}
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="10" height="10" viewBox="0,0,256,256">
+                <g fill="#465671" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                  stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                  font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                  style="mix-blend-mode: normal">
+                  <g transform="scale(10.66667,10.66667)">
+                    <path
+                      d="M12,0c-6.62891,0 -12,5.37109 -12,12c0,6.62891 5.37109,12 12,12c6.62891,0 12,-5.37109 12,-12c0,-6.62891 -5.37109,-12 -12,-12zM12,2c5.52344,0 10,4.47656 10,10c0,5.52344 -4.47656,10 -10,10c-5.52344,0 -10,-4.47656 -10,-10c0,-5.52344 4.47656,-10 10,-10zM12,5.8125c-0.18359,0 -0.33594,-0.00391 -0.5,0.03125c-0.16406,0.03516 -0.31641,0.125 -0.4375,0.21875c-0.12109,0.09375 -0.21094,0.22266 -0.28125,0.375c-0.07031,0.15234 -0.09375,0.33203 -0.09375,0.5625c0,0.22656 0.02344,0.40625 0.09375,0.5625c0.07031,0.15625 0.16016,0.28125 0.28125,0.375c0.12109,0.09375 0.27344,0.14844 0.4375,0.1875c0.16406,0.03906 0.31641,0.0625 0.5,0.0625c0.17969,0 0.37109,-0.02344 0.53125,-0.0625c0.16016,-0.03906 0.28516,-0.09375 0.40625,-0.1875c0.12109,-0.09375 0.21094,-0.21875 0.28125,-0.375c0.07031,-0.15234 0.125,-0.33594 0.125,-0.5625c0,-0.23047 -0.05469,-0.41016 -0.125,-0.5625c-0.07031,-0.15234 -0.16016,-0.28125 -0.28125,-0.375c-0.12109,-0.09375 -0.24609,-0.18359 -0.40625,-0.21875c-0.16016,-0.03516 -0.35156,-0.03125 -0.53125,-0.03125zM10.78125,9.15625v8.96875h2.4375v-8.96875z">
+                    </path>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div class="progress">
+              <div class="filled" [style]="{width: (user.completedTask/user.noOftask*100)+'%'}">
+
+              </div>
+            </div>
+          </div>
+          <div class="action col">
+            <div class="edit" (click)="edit(i)">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                <path
+                  d="M 18 2 L 15.585938 4.4140625 L 19.585938 8.4140625 L 22 6 L 18 2 z M 14.076172 5.9238281 L 3 17 L 3 21 L 7 21 L 18.076172 9.9238281 L 14.076172 5.9238281 z">
+                </path>
+              </svg>
+              Edit details
+            </div>
+            <div class="edit" (click)="copy(i)">
+              <svg id='Copy_24' width='12' height='12' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
+                xmlns:xlink='http://www.w3.org/1999/xlink'>
+                <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
+                <g transform="matrix(1 0 0 1 12 12)">
+                  <path
+                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                    transform=" translate(-12, -12)"
+                    d="M 4 2 C 2.895 2 2 2.895 2 4 L 2 18 L 4 18 L 4 4 L 18 4 L 18 2 L 4 2 z M 8 6 C 6.895 6 6 6.895 6 8 L 6 20 C 6 21.105 6.895 22 8 22 L 20 22 C 21.105 22 22 21.105 22 20 L 22 8 C 22 6.895 21.105 6 20 6 L 8 6 z M 8 8 L 20 8 L 20 20 L 8 20 L 8 8 z"
+                    stroke-linecap="round" />
+                </g>
+              </svg>
+              Invite link
+            </div>
+          </div>
+        </div>
+        <div class="expand" *ngIf="selectedIndex==i">
+          <div class="tab" *ngFor="let task of user.tasks">
+            <div class="left">
+              <div class="top">{{task.title}}</div>
+              <div class="bottom">{{task.type=='file' ? 'File upload' : 'Text Input'}} | {{task.ispending ==null ||
+                task.ispending ? "pending" : task.type=='file' ? '1 Files uploaded' : '1 Answer submitted'}}</div>
+            </div>
+            <div class="right" *ngIf="task.ispending ==null || task.ispending">
+              <img src="assets/images/info.svg">
+            </div>
+            <div class="right" *ngIf="task.ispending==false">
+              <img src="assets/images/success.svg">
+              <img src="assets/images/open.svg" (click)="openTask(task)">
+            </div>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div class="pop" *ngIf="addForms">
+  <app-hire-form (closeForm)="update($event)" [existingFrom]="formsValue"></app-hire-form>
+</div>
+<div class="pop" *ngIf="loading">
+  <app-loading></app-loading>
+</div>
+<div class="pop-box" *ngIf="selectedTask!=null">
+  <div class="main-pop">
+    <div class="header">
+      <span>{{selectedTask.title}}</span>
+      <div class="close" (click)="close()">
+        <svg>
+          <line x1=0 y1=0 x2=10.5 y2=10.5 stroke="black" stroke-width="1" />
+          <line x1=0 y1=10.5 x2=10.5 y2=0 stroke="black" stroke-width="1" />
+        </svg>
+      </div>
+    </div>
+    <div class="desc">
+      Response
+    </div>
+    <div class="files" *ngIf="selectedTask.type=='file'">
+      <div class="file" (click)="openDoc(selectedTask.file_url)">
+        <div class="image"
+          *ngIf="['png', 'jpg', 'jpeg'].includes(selectedTask.file_url.split('.')[selectedTask.file_url.split('.').length -1])">
+          <img [src]="selectedTask.file_url">
+        </div>
+        <div class="image"
+          *ngIf="!['png', 'jpg', 'jpeg'].includes(selectedTask.file_url.split('.')[selectedTask.file_url.split('.').length -1])">
+          <img src="assets/images/file.svg">
+        </div>
+        <div class="fileName">
+          {{selectedTask.file_url.split('/')[selectedTask.file_url.split('/').length -1]}}
+        </div>
+      </div>
+    </div>
+    <div class="feedback" *ngIf="selectedTask.type!='file'">
+      {{selectedTask.feedback}}
+    </div>
+  </div>
+</div>

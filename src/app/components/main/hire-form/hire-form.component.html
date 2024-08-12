@@ -1,0 +1,75 @@
+<div class="form-pop">
+    <div class="main-form">
+        <div class="header">
+            Add new hire
+            <div class="close" (click)="close()">
+                <svg>
+                    <line x1=0 y1=0 x2=10.5 y2=10.5 stroke="black" stroke-width="1" />
+                    <line x1=0 y1=10.5 x2=10.5 y2=0 stroke="black" stroke-width="1" />
+                </svg>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="scroll">
+            <form class="form" [formGroup]="form">
+                <div class="input">
+                    <label>Name<span>*</span></label>
+                    <input formControlName="name" />
+                </div>
+                <div class="input">
+                    <label>Email<span>*</span></label>
+                    <input formControlName="email" />
+                </div>
+                <div class="input">
+                    <label>Contact no.<span>*</span></label>
+                    <div class="left-icon">
+                        <img src="assets/images/in.svg">
+                        <input formControlName="contact" />
+                    </div>
+                </div>
+                <div class="input">
+                    <label>Date of joining<span>*</span></label>
+                    <div class="date">
+                        <img src="assets/images/cal.svg">
+                        <input class="date-input" type="date" formControlName="dateFiled" />
+                        {{form.get('dateFiled').value | date:'MM/dd/y' }}
+                    </div>
+                </div>
+            </form>
+            <div class="task-list">
+                <ng-container *ngFor="let task of form.get('tasks').controls; let i=index">
+                    <form class="task" [formGroup]="task">
+                        <div class="task-no">
+                            Task {{i+1}}
+                        </div>
+                        <div class="task-input">
+                            <label>Title<span>*</span></label>
+                            <input formControlName="title" />
+                        </div>
+                        <div class="task-select">
+                            <label>Type<span>*</span></label>
+                            <img src="assets/images/upload.svg">
+                            <select formControlName="type">
+                                <option [value]="'file'">File upload</option>
+                                <option [value]="'desc'"> Write description</option>
+                            </select>
+                        </div>
+                        <div class="task-desc">
+                            <label>Description*</label>
+                            <textarea placeholder="Type here" formControlName="desc"></textarea>
+                        </div>
+                    </form>
+                </ng-container>
+            </div>
+            <div class="add-task" (click)="addTask()">
+                &#43; Add task
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="save">
+            <div class="cta" [class.disable]="this.form.status=='INVALID'" (click)="submit()">
+                Save
+            </div>
+        </div>
+    </div>
+</div>
